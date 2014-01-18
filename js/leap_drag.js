@@ -1,5 +1,16 @@
    $(document).on('ready', function () {
 
+     var controller = new Leap.Controller({
+       enableGestures: true
+     });
+
+     drag("#test", controller);
+
+     // Get frames rolling by connecting the controller
+     controller.connect();
+   });
+
+   function drag(element, controller) {
      var width = $(window).width();
      var height = $(window).height();
 
@@ -11,7 +22,7 @@
 
      // Global screenTap arrays
 
-     var isHoldingObject = false;
+     var isHoldingObject = null;
      var screenTaps = [];
      var SCREENTAP_LIFETIME = 1;
      var SCREENTAP_START_SIZE = 30;
@@ -79,16 +90,16 @@
 
 
        screenTaps.push([pos[0], pos[1], time]);
-       console.log(pos[1] + ", " + parseInt($("#test").css("top")) + ", " + parseInt($("#test").css("top")) + $("#test").height());
-       if (pos[1] >= parseInt($("#test").css("top")) && pos[1] < parseInt($("#test").css("top")) + $("#test").height()) {
+       console.log(pos[1] + ", " + parseInt($(element).css("top")) + ", " + parseInt($(element).css("top")) + $(element).height());
+       if (pos[1] >= parseInt($(element).css("top")) && pos[1] < parseInt($(element).css("top")) + $(element).height() && isHoldingObject == null) {
 
-         if (pos[0] >= parseInt($("#test").css("left")) && pos[0] < parseInt($("#test").css("left")) + $("#test").width()) {
-           isHoldingObject = true;
+         if (pos[0] >= parseInt($(element).css("left")) && pos[0] < parseInt($(element).css("left")) + $(element).width()) {
+           isHoldingObject = element;
          } else {
-           isHoldingObject = false;
+           isHoldingObject = null;
          }
        } else {
-         isHoldingObject = false;
+         isHoldingObject = null;
        }
        console.log(isHoldingObject);
 
@@ -114,9 +125,6 @@
 
 
      // Creates our Leap Controller
-     var controller = new Leap.Controller({
-       enableGestures: true
-     });
 
      // Tells the controller what to do every time it sees a frame
      controller.on('frame', function (data) {
@@ -154,19 +162,19 @@
          if (hand.fingers.length > 0) {
            finger = hand.fingers[0];
            fingerPos = leapToScene(finger.tipPosition);
-           if (isHoldingObject) {
-             if (fingerPos[0] > (width - $("#test").width())) {
-               fingerPos[0] = width - $("#test").width();
+           if (isHoldingObject != null) {
+             if (fingerPos[0] > (width - $(element).width())) {
+               fingerPos[0] = width - $(element).width();
              } else if (fingerPos[0] < 0) {
                fingerPos[0] = 0;
              }
-             if (fingerPos[1] > (height - $("#test").height())) {
-               fingerPos[1] = height - $("#test").height();
+             if (fingerPos[1] > (height - $(element).height())) {
+               fingerPos[1] = height - $(element).height();
              } else if (fingerPos[1] < 0) {
                fingerPos[1] = 0;
              }
-             $("#test").css("top", fingerPos[1]);
-             $("#test").css("left", fingerPos[0]);
+             $(element).css("top", fingerPos[1]);
+             $(element).css("left", fingerPos[0]);
              //console.log("x : " + fingerPos[1] + " y: " + fingerPos[0]);
            }
          }
@@ -193,14 +201,10 @@
            console.log(fingerPos);
          }
          if (isHoldingObject) {
-           $("#test").css("top", fingerPos[1]);
-           $("#test").css("left", fingerPos[0]);
+           $(element).css("top", fingerPos[1]);
+           $(element).css("left", fingerPos[0]);
            console.log("x : " + fingerPos[1] + " y: " + fingerPos[0]);
          }
        }
      });*/
-
-
-     // Get frames rolling by connecting the controller
-     controller.connect();
-   });
+   }
