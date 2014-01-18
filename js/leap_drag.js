@@ -272,7 +272,7 @@ function onScreenTap(gesture) {
 
   }
 
-  if ($('#test').top >= $("#invisible").top - 5 && $('#test').top <= $("#invisible").top + 5 && $('#test').left >= $("#invisible").left-5 && $('#test').left <= $("#invisible").left+5) {
+  if (parseInt($('#test').top) >= parseInt($("#invisible").top) - 5 && parseInt($('#test').top) <= parseInt($("#invisible").top) + 5 && parseInt($('#test').left) >= parseInt($("#invisible").left)-5 && parseInt($('#test').left) <= $("#invisible").left+5) {
     $("#answer").css("border", "2px green solid");
   }
 }
