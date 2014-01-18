@@ -1,0 +1,62 @@
+<html>
+
+	<head>
+		<style>
+			#canvas{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<canvas id="canvas"></canvas>
+		<script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
+
+		<button onclick="controller.connect">Spawn Unicorn (Connect Controller)</button>
+
+		<script>
+
+			//canvas variable
+			var canvas = document.getElementById('canvas'); 
+			var c = canvas.getContext('2d'); 
+    		var img = document.createElement('img');
+    		img.src = "http://i.imgur.com/f68W5EC.png";
+
+			//controller
+			var controller = new Leap.Controller();
+
+			//check if controller connects
+			controller.on( 'connect' , function(){
+		        
+		    	console.log( 'Successfully connected.' );
+
+			});
+
+
+			controller.on( 'deviceConnected' , function() {
+
+		    	console.log( 'A Leap device has been connected.' );
+
+			});
+
+			controller.on( 'deviceDisconnected' , function() {
+
+		  		console.log( 'A Leap device has been disconnected.' );
+
+			});
+
+			controller.on( 'ready' , function(){
+
+			    c.drawImage( img , 0 , 0 );
+
+			});
+
+			controller.connect();
+
+		</script>
+
+	<body>
+
+</html>
