@@ -11,6 +11,9 @@ var frame;
 var width = $(window).width();
 var height = $(window).height();
 
+var width_grid = width/5;
+var height_grid = height/5;
+
 var screenTaps = [];
 var SCREENTAP_LIFETIME = 1;
 var SCREENTAP_START_SIZE = 30;
@@ -19,8 +22,8 @@ var components = [];
 function component(top, left, width, height, id) {
   this.top = top;
   this.left = left;
-  this.width = width;
-  this.height = height;
+  this.width = width_grid;
+  this.height = height_grid;
   this.id = id;
 
 }
@@ -30,7 +33,9 @@ $(document).on('ready', function () {
   $('body div').each(function () {
     if ($(this).hasClass("component")) {
       console.log($(this));
-      var temp = new component(parseInt($(this).css("top")), parseInt($(this).css("left")), $(this).width(), $(this).height(), $(this).attr('id'));
+      var temp = new component(parseInt($(this).css("top")), parseInt($(this).css("left")), width_grid, height_grid, $(this).attr('id'));
+      $(this).css("width", width_grid + "px");
+      $(this).css("height", height_grid + "px");
       components.push(temp);
     }
   });
@@ -107,9 +112,11 @@ $(document).on('ready', function () {
       var $d = $("<div class='component'></div>").attr('id', name);
       $d.css("position", "absolute");
       $d.css("top", "0px");
-      $d.css("left", "0px");
-      $d.css("height", "200px");
-      $d.css("width", "200px");
+      $d.css("left", "0px"); 
+      $d.css("height", height_grid + "px");
+      $d.css("width", width_grid + "px");
+      $d.css("background-color", "black");
+      
       $d.html("This is a new item");
       $('body').append($d);
       var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));

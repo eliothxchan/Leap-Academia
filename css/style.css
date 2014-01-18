@@ -1,6 +1,4 @@
 #test {
-  width: 200px;
-  height: 200px;
   background-color: red;
   border-radius: 4px;
   position: absolute;
@@ -16,8 +14,6 @@
   top: -10px;
 }
 #loop {
-  width: 200px;
-  height: 200px;
   background-color: blue;
   border-radius: 4px;
   position: absolute;
@@ -25,8 +21,6 @@
   left: 350px;
 }
 #circuit {
-  width: 200px;
-  height: 200px;
   background-color: green;
   border-radius: 4px;
   position: absolute;

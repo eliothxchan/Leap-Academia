@@ -4,9 +4,10 @@ $(document).on('ready', function() {
 
 	var window_width = $(window).width();
 	var window_height = $(window).height();
-	var top_components = splitToParts(window_width, 10, 10);
-	var left_components = splitToParts(window_height, 10, 10);
-
+	var top_components = splitToParts(window_height, 5, 10);
+	var left_components = splitToParts(window_width, 5, 10);
+    console.log(top_components);
+  console.log("Left : "+ left_components); 
 	for (var i = 0; i < top_components.length; i++) {
 		full_grid[i] = [];
 	}
@@ -17,7 +18,7 @@ $(document).on('ready', function() {
 		}
 	}
 
-	console.log(full_grid);
+
 });
 
 function point(top, left) {
@@ -49,8 +50,8 @@ function closestSnapPoint(top, left) {
 			var ldiff = Math.abs(left - full_grid[i][j].left);
 			var tdiff = Math.abs(top - full_grid[i][j].top);
 
-			if (Math.sqrt(ldiff*ldiff + tdiff*tdiff) < diff) {
-				diff = Math.sqrt(ldiff*ldiff + tdiff*tdiff);
+			if (ldiff + tdiff < diff) {
+				diff = ldiff + tdiff;
 				console.log("Diff = "+diff);
 				closestPointIndex = [i,j];
 				console.log("Left = "+full_grid[i][j].left);
