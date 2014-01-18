@@ -82,24 +82,38 @@ $(document).on('ready', function () {
           } else if (fingerPos[1] < 0) {
             fingerPos[1] = 0;
           }
-          $('#'+isHoldingObject.id).css("top", fingerPos[1]);
+          $('#' + isHoldingObject.id).css("top", fingerPos[1]);
           for (var i = 0; i < components.length; i++) {
-            if (isHoldingObject.id == components[i].id) 
+            if (isHoldingObject.id == components[i].id)
               components[i].top = fingerPos[1];
-          } 
-          $('#'+isHoldingObject.id).css("left", fingerPos[0]);
+          }
+          $('#' + isHoldingObject.id).css("left", fingerPos[0]);
           for (var i = 0; i < components.length; i++) {
-            if (isHoldingObject.id == components[i].id) 
+            if (isHoldingObject.id == components[i].id)
               components[i].left = fingerPos[0];
           }
 
-          $('#pointer').css("top", fingerPos[1] + isHoldingObject.height/2);
+          $('#pointer').css("top", fingerPos[1] + isHoldingObject.height / 2);
           $('#pointer').css("left", fingerPos[0] + isHoldingObject.width / 2);
           //console.log("x : " + fingerPos[1] + " y: " + fingerPos[0]);
         }
       }
 
     }
+
+    $('#generateComponent').on("click", function () {
+      var name = "items" + components.length;
+      var $d = $("<div class='component'></div>").attr('id', name);
+      $d.css("position", "absolute");
+      $d.css("top", "0px");
+      $d.css("left", "0px");
+      $d.css("height", "200px");
+      $d.css("width", "200px");
+      $d.html("This is a new item");
+      $('body').append($d);
+      var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));
+      components.push(temp);
+    });
 
 
   });
