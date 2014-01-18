@@ -12,20 +12,26 @@
 	<body>
 
 		<canvas id="canvas"></canvas>
+		<button onclick="controller.connect()">Count Fingers ( Connect Controller )</button>
 		<script src="node_modules/leapjs/leap.js"></script>
-
-		<button onclick="controller.connect">Spawn Unicorn (Connect Controller)</button>
 
 		<script>
 
 			//canvas variable
 			var canvas = document.getElementById('canvas'); 
 			var c = canvas.getContext('2d'); 
-    		var img = document.createElement('img');
-    		img.src = "http://i.imgur.com/f68W5EC.png";
 
 			//controller
 			var controller = new Leap.Controller();
+
+			controller.on('animationFrame', function(frame){
+				var numFingers = frame.fingers.length;
+				c.clearRect(0,0,canvas.width,canvas.height);
+				c.font = "30px Arial";
+				c.textAlign = 'center';
+				c.textBaseline = 'middle';
+				c.fillText(numFingers, (canvas.width/2), (canvas.height/2));
+			});
 
 			//check if controller connects
 			controller.on( 'connect' , function(){
@@ -34,22 +40,23 @@
 
 			});
 
-
+			//check if Leap connects
 			controller.on( 'deviceConnected' , function() {
 
 		    	console.log( 'A Leap device has been connected.' );
 
 			});
 
+			//check if Leap disconnects
 			controller.on( 'deviceDisconnected' , function() {
 
 		  		console.log( 'A Leap device has been disconnected.' );
 
 			});
 
-			controller.on( 'ready' , function(){
+			//check if controller is ready
+			controller.on('ready', function(){
 
-			    c.drawImage( img , 0 , 0 );
 
 			});
 
