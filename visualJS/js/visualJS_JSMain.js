@@ -20,30 +20,26 @@ function Block(element, type) {
     //insert gesture event for mpickup
 }
 
-function move(element) {
-    //Make position absolute
-    $(element).addClass("moveable");
-    
-    //Update position to mouse position
-    $("body").mousemove(function (event) {
-        var beingHeld = element;
-        console.log(beingHeld.id);
-        
-        var x = event.clientX;
+function move(element){
+    $(element).css("position", "absolute");
+    var beingHeld = element;
+    console.log(beingHeld);
+    $('body').mousemove(function(event){
+        var x = event.clientX
         var y = event.clientY;
-        //Set Y coord
-        $(element).css("top", y);
-        //Set X coord
-        $(element).css("left", x);
+        $(beingHeld).css("top", y);
+        $(beingHeld).css("left", x);
 
-        $(".js_block").click(function () {
+        $(".js_block").click(function(){
             nest(this, beingHeld);
             beingHeld = "";
-//            $(element).removeClass("moveable");
-
+            x = Number(x);
+            y = Number(y);
         });
-        $("body").click(function () {
-            $("body").unbind();
+
+        $('body').click(function(event){
+            x = Number(x);
+            y = Number(y);
             beingHeld = "";
         });
     });
@@ -60,17 +56,17 @@ function outputName(type) {
     }
 }
 
-function link(ele1, ele2) {
-    var pos1 = [ele1.style.left, ele1.style.top];
-    var pos2 = [ele2.style.left, ele2.style.top];
-    var canvas = document.createElement('canvas');
-    document.body.appendChild(canvas);
-    if (canvas.getContext) {
-        var line = canvas.getContext("2d");
-        line.moveTo(pos1[0], pos1[1]);
-        line.lineTo(pos2[0], pos2[1]);
-    }
-}
+//function link(ele1, ele2) {
+//    var pos1 = [ele1.style.left, ele1.style.top];
+//    var pos2 = [ele2.style.left, ele2.style.top];
+//    var canvas = document.createElement('canvas');
+//    document.body.appendChild(canvas);
+//    if (canvas.getContext) {
+//        var line = canvas.getContext("2d");
+//        line.moveTo(pos1[0], pos1[1]);
+//        line.lineTo(pos2[0], pos2[1]);
+//    }
+//}
 
 
 function nest(parent, child) {
@@ -80,10 +76,10 @@ function nest(parent, child) {
     }
     
     $(parent).append(child);
-    $(parent).removeClass("moveable");
+    $(parent).css("position", "relative");
     $(child).nested = true;
     $(child).nestedTo = parent;
-    $(child).removeClass("moveable");
+    $(child).css("position", "relative");
 }
 
 //function getNesting(){
