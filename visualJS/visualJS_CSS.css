@@ -1,0 +1,31 @@
+.js_block{
+    /*This is the class for blockss. Individual changes are
+    done with IDs*/
+    font-family:sans-serif;
+    text-align:center;
+    display:block;
+    border:2px solid;
+    border-radius: 15px;
+    padding: 10px;
+    width:150px;
+    margin-bottom:10px;
+}
+#forLoop{
+    background-color: orange;
+}
+#whileLoop{
+    background-color: yellow;
+}
+#if{
+   background-color: red;
+}
+#else{
+    background-color: red;
+}
+#function{
+    background-color: green;
+}
+.moveable{
+    display: default;
+    position: absolute;
+}
