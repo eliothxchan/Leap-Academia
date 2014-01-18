@@ -11,6 +11,15 @@
   width: 10px;
   height: 10px;
   background-color: black;
+  opacity: 0;
+  position: absolute;
+  left: 0px;
+  top: -10px;
+}
+#direction {
+  width: 10px;
+  height: 10px;
+  background-color: black;
   position: absolute;
   left: 0px;
   top: -10px;

@@ -11,8 +11,8 @@ var frame;
 var width = $(window).width();
 var height = $(window).height();
 
-var width_grid = width/5;
-var height_grid = height/5;
+var width_grid = width / 5;
+var height_grid = height / 5;
 
 var screenTaps = [];
 var SCREENTAP_LIFETIME = 1;
@@ -64,6 +64,7 @@ $(document).on('ready', function () {
       }
 
     }
+
     updateScreenTaps();
 
     var hand, handPos;
@@ -76,6 +77,9 @@ $(document).on('ready', function () {
       if (hand.fingers.length > 0) {
         finger = hand.fingers[0];
         fingerPos = leapToScene(finger.tipPosition);
+        
+            $('#direction').css("top", fingerPos[1]);
+    $('#direction').css("left", fingerPos[0]);
         if (isHoldingObject != null) {
           if (fingerPos[0] > (width - isHoldingObject.width)) {
             fingerPos[0] = width - isHoldingObject.width;
@@ -98,9 +102,12 @@ $(document).on('ready', function () {
             if (isHoldingObject.id == components[i].id)
               components[i].left = fingerPos[0];
           }
+          
+          
 
-          $('#pointer').css("top", fingerPos[1] + isHoldingObject.height / 2);
-          $('#pointer').css("left", fingerPos[0] + isHoldingObject.width / 2);
+
+          /*$('#pointer').css("top", fingerPos[1] + isHoldingObject.height / 2);
+          $('#pointer').css("left", fingerPos[0] + isHoldingObject.width / 2);*/
           //console.log("x : " + fingerPos[1] + " y: " + fingerPos[0]);
         }
       }
@@ -109,22 +116,22 @@ $(document).on('ready', function () {
 
   });
 
-    $('#generateComponent').on("click", function () {
-      var name = "items" + components.length;
-      var $d = $("<div class='component'></div>").attr('id', name);
-      $d.css("position", "absolute");
-      $d.css("top", "0px");
-      $d.css("left", "0px"); 
-      $d.css("height", height_grid + "px");
-      $d.css("width", width_grid + "px");
-      $d.css("background-color", "black");
-      
-      $d.html("This is a new item");
-      $('body').append($d);
-      var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));
-      components.push(temp);
-      console.log("Generated component");
-    });
+  $('#generateComponent').on("click", function () {
+    var name = "items" + components.length;
+    var $d = $("<div class='component'></div>").attr('id', name);
+    $d.css("position", "absolute");
+    $d.css("top", "0px");
+    $d.css("left", "0px");
+    $d.css("height", height_grid + "px");
+    $d.css("width", width_grid + "px");
+    $d.css("background-color", "black");
+
+    $d.html("This is a new item");
+    $('body').append($d);
+    var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));
+    components.push(temp);
+    console.log("Generated component");
+  });
 
   // Get frames rolling by connecting the controller
   controller.connect();
@@ -195,12 +202,11 @@ function onScreenTap(gesture) {
       if (pos[1] >= element.top && pos[1] < element.top + element.height) {
         if (pos[0] >= element.left && pos[0] < element.left + element.width) {
           isHoldingObject = new component(element.top, element.left, element.width, element.height, element.id);
-        } 
-      } 
+        }
+      }
     }
-  }
-  else {
-    console.log("Positions: "+pos[1]+" "+pos[0]);
+  } else {
+    console.log("Positions: " + pos[1] + " " + pos[0]);
     var closestPoint = closestSnapPoint(pos[1], pos[0]);
 
     $('#' + isHoldingObject.id).css("top", closestPoint.top);
@@ -214,12 +220,12 @@ function onScreenTap(gesture) {
         components[i].left = closestPoint.left;
     }
 
-    $('#pointer').css("top", pos[1] + isHoldingObject.height / 2);
-    $('#pointer').css("left", pos[0] + isHoldingObject.width / 2);
+    /*$('#pointer').css("top", pos[1] + isHoldingObject.height / 2);
+    $('#pointer').css("left", pos[0] + isHoldingObject.width / 2);*/
 
     isHoldingObject = null;
 
-    
+
   }
 }
 
