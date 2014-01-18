@@ -272,7 +272,7 @@ function onScreenTap(gesture) {
 
   }
 
-  if ($('#test').top = $("#invisible").top && $('#test').left = $("#invisible").left) {
+  if ($('#test').top >= $("#invisible").top - 5 && $('#test').top <= $("#invisible").top + 5 && $('#test').left >= $("#invisible").left-5 && $('#test').left <= $("#invisible").left+5) {
     $("#answer").css("border", "2px green solid");
   }
 }
