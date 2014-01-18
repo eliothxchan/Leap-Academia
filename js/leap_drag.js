@@ -72,24 +72,26 @@
 
        var time = frame.timestamp;
 
+       console.log(pos);
+
+       $('#pointer').css("top", pos[1]);
+       $('#pointer').css("left", pos[0]);
+
+
        screenTaps.push([pos[0], pos[1], time]);
+       console.log(pos[1] + ", " + parseInt($("#test").css("top")) + ", " + parseInt($("#test").css("top")) + $("#test").height());
+       if (pos[1] >= parseInt($("#test").css("top")) && pos[1] < parseInt($("#test").css("top")) + $("#test").height()) {
 
-       isHoldingObject = !isHoldingObject;
+         if (pos[0] >= parseInt($("#test").css("left")) && pos[0] < parseInt($("#test").css("left")) + $("#test").width()) {
+           isHoldingObject = true;
+         } else {
+           isHoldingObject = false;
+         }
+       } else {
+         isHoldingObject = false;
+       }
        console.log(isHoldingObject);
-       console.log("x : " + pos[0] + " y: " + pos[1]);
 
-       if (pos[0] > (width - $("#test").width())) {
-         pos[0] = width - $("#test").width();
-       } else if (pos[0] < 0) {
-         pos[0] = 0;
-       }
-       if (pos[1] > (height - $("#test").height())) {
-         pos[1] = height - $("#test").height();
-       } else if (pos[1] < 0) {
-         pos[1] = 0;
-       }
-       $("#test").css("top", pos[1]);
-       $("#test").css("left", pos[0]);
 
 
      }
@@ -128,7 +130,6 @@
 
          var gesture = frame.gestures[i];
 
-
          var type = gesture.type;
 
          switch (type) {
@@ -143,8 +144,62 @@
        }
        updateScreenTaps();
 
+       var hand, handPos;
+       if (frame.hands.length > 0) {
+         hand = frame.hands[0];
+
+
+         var finger, fingerPos;
+         //iterate through fingers
+         if (hand.fingers.length > 0) {
+           finger = hand.fingers[0];
+           fingerPos = leapToScene(finger.tipPosition);
+           if (isHoldingObject) {
+             if (fingerPos[0] > (width - $("#test").width())) {
+               fingerPos[0] = width - $("#test").width();
+             } else if (fingerPos[0] < 0) {
+               fingerPos[0] = 0;
+             }
+             if (fingerPos[1] > (height - $("#test").height())) {
+               fingerPos[1] = height - $("#test").height();
+             } else if (fingerPos[1] < 0) {
+               fingerPos[1] = 0;
+             }
+             $("#test").css("top", fingerPos[1]);
+             $("#test").css("left", fingerPos[0]);
+             //console.log("x : " + fingerPos[1] + " y: " + fingerPos[0]);
+           }
+         }
+
+       }
+
 
      });
+
+     /* controller.on('animationFrame', function (data) {
+       frame = data;
+       //iterate through hands
+      var hand, handPos;
+       if (frame.hands.length > 0) {
+         hand = frame.hands[0];
+         handPos = leapToScene(frame, hand.palmPosition);
+
+
+         var finger, fingerPos;
+         //iterate through fingers
+         if (hand.fingers.length > 0) {
+           finger = hand.fingers[0];
+           fingerPos = leapToScene(frame, finger.tipPosition);
+           console.log(fingerPos);
+         }
+         if (isHoldingObject) {
+           $("#test").css("top", fingerPos[1]);
+           $("#test").css("left", fingerPos[0]);
+           console.log("x : " + fingerPos[1] + " y: " + fingerPos[0]);
+         }
+       }
+     });*/
+
 
      // Get frames rolling by connecting the controller
      controller.connect();
