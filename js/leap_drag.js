@@ -82,6 +82,7 @@ $(document).on('ready', function () {
           } else if (fingerPos[1] < 0) {
             fingerPos[1] = 0;
           }
+
           $('#' + isHoldingObject.id).css("top", fingerPos[1]);
           for (var i = 0; i < components.length; i++) {
             if (isHoldingObject.id == components[i].id)
@@ -177,31 +178,42 @@ function onScreenTap(gesture) {
 
   var time = frame.timestamp;
 
-  console.log(pos);
-
   $('#pointer').css("top", pos[1]);
   $('#pointer').css("left", pos[0]);
   screenTaps.push([pos[0], pos[1], time]);
-  for (var i = 0; i < components.length; i++) {
-    var element = components[i];
 
-    if (pos[1] >= element.top && pos[1] < element.top + element.height && isHoldingObject == null) {
-      console.log(element);
-      if (pos[0] >= element.left && pos[0] < element.left + element.width) {
-        isHoldingObject = new component(element.top, element.left, element.width, element.height, element.id);
-        break;
-      } else {
-        isHoldingObject = null;
-      }
-    } else {
-      isHoldingObject = null;
+  if (isHoldingObject == null) {
+    for (var i = 0; i < components.length; i++) {
+      var element = components[i];
+
+      if (pos[1] >= element.top && pos[1] < element.top + element.height) {
+        if (pos[0] >= element.left && pos[0] < element.left + element.width) {
+          isHoldingObject = new component(element.top, element.left, element.width, element.height, element.id);
+        } 
+      } 
     }
-    console.log(isHoldingObject);
   }
+  else {
+    console.log("Positions: "+pos[1]+" "+pos[0]);
+    var closestPoint = closestSnapPoint(pos[1], pos[0]);
 
+    $('#' + isHoldingObject.id).css("top", closestPoint.top);
+    for (var i = 0; i < components.length; i++) {
+      if (isHoldingObject.id == components[i].id)
+        components[i].top = closestPoint.top;
+    }
+    $('#' + isHoldingObject.id).css("left", closestPoint.left);
+    for (var i = 0; i < components.length; i++) {
+      if (isHoldingObject.id == components[i].id)
+        components[i].left = closestPoint.left;
+    }
 
+    $('#pointer').css("top", pos[1] + isHoldingObject.height / 2);
+    $('#pointer').css("left", pos[0] + isHoldingObject.width / 2);
+
+    isHoldingObject = null;
+  }
 }
-
 
 function updateScreenTaps() {
 
