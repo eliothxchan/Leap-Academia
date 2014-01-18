@@ -138,9 +138,9 @@ $(document).on('ready', function () {
     $d.css("left", "0px");
     $d.css("height", height_grid + "px");
     $d.css("width", width_grid + "px");
-    $d.css("background-color", "black");
-
-    $d.html("This is a new item");
+    $d.css("background-image", "url(\"../images/resistor.png\")");
+    var str = parseInt(recordVoice()[1]);
+    $d.html(str+" Ohms");
     $('body').append($d);
     var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));
     components.push(temp);

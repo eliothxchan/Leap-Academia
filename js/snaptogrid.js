@@ -52,10 +52,10 @@ function closestSnapPoint(top, left) {
 
 			if (ldiff + tdiff < diff) {
 				diff = ldiff + tdiff;
-				console.log("Diff = "+diff);
+				//console.log("Diff = "+diff);
 				closestPointIndex = [i,j];
-				console.log("Left = "+full_grid[i][j].left);
-				console.log("Top = "+full_grid[i][j].top);
+				//console.log("Left = "+full_grid[i][j].left);
+				//console.log("Top = "+full_grid[i][j].top);
 			}
 		}
 	}
