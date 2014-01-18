@@ -276,7 +276,7 @@ function onScreenTap(gesture) {
   console.log(parseInt($('#test').css("top")) + "  " + parseInt($("#invisible").css("top")));
   if (parseInt($('#test').css("top")) >= parseInt($("#invisible").css("top")) - 5 && parseInt($('#test').css("top")) <= parseInt($("#invisible").css("top")) + 5 && parseInt($('#test').css("left")) >= parseInt($("#invisible").css("left")) - 5 && parseInt($('#test').css("left")) <= $("#invisible").css("left") + 5) {
     $("#answer").css("border-color", "green");
-
+    console.log("REACHED");
   }
 }
 
