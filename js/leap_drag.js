@@ -34,6 +34,12 @@ function component(top, left, width, height, id) {
 
 $(document).on('ready', function () {
 
+  $("#invisible").css("width", width_grid + "px");
+  $("#invisible").css("height", height_grid + "px");
+  $("#invisible").css("top", height_grid + "px");
+  $("#invisible").css("left", width_grid + "px");
+  
+  
   $('body div').each(function () {
     if ($(this).hasClass("component")) {
       console.log($(this));

@@ -11,13 +11,9 @@
   z-index: 1000;
 }
 #invisible {
-  width: 277px;
-  height: 137px;
   border-radius: 4px;
   background-color: grey;
   position: absolute;
-  top: 100px;
-  left: 100px;
 }
 #pointer {
   width: 10px;
