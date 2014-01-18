@@ -29,6 +29,9 @@ function component(top, left, width, height, id) {
 
 }
 
+
+
+
 $(document).on('ready', function () {
 
   $('body div').each(function () {
@@ -61,9 +64,9 @@ $(document).on('ready', function () {
         onScreenTap(gesture);
         break;
 
-      // case "circle":
-      //   onCircle(gesture);
-      //   break;
+        // case "circle":
+        //   onCircle(gesture);
+        //   break;
       }
 
     }
@@ -80,9 +83,9 @@ $(document).on('ready', function () {
       if (hand.fingers.length > 0) {
         finger = hand.fingers[0];
         fingerPos = leapToScene(finger.tipPosition);
-        
-            $('#direction').css("top", fingerPos[1]);
-    $('#direction').css("left", fingerPos[0]);
+
+        $('#direction').css("top", fingerPos[1]);
+        $('#direction').css("left", fingerPos[0]);
         if (isHoldingObject != null) {
           if (fingerPos[0] > (width - isHoldingObject.width)) {
             fingerPos[0] = width - isHoldingObject.width;
@@ -105,8 +108,8 @@ $(document).on('ready', function () {
             if (isHoldingObject.id == components[i].id)
               components[i].left = fingerPos[0];
           }
-          
-          
+
+
 
 
           /*$('#pointer').css("top", fingerPos[1] + isHoldingObject.height / 2);
@@ -206,7 +209,7 @@ function leapToScene(leapPos) {
 //           isHoldingObject.orientation = 0;
 //         else
 //           isHoldingObject.orientation += 90;   
-      
+
 //       }
 //       else {
 //         console.log("Rotate counterclockwise by "+(isHoldingObject.orientation+90));
@@ -261,6 +264,10 @@ function onScreenTap(gesture) {
     isHoldingObject = null;
 
 
+  }
+
+  if ($('#test').top = $("#invisible").top && $('#test').left = $("#invisible").left) {
+    $("#answer").css("border", "2px green solid");
   }
 }
 
