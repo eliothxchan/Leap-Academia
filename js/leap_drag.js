@@ -107,6 +107,8 @@ $(document).on('ready', function () {
 
     }
 
+  });
+
     $('#generateComponent').on("click", function () {
       var name = "items" + components.length;
       var $d = $("<div class='component'></div>").attr('id', name);
@@ -121,16 +123,13 @@ $(document).on('ready', function () {
       $('body').append($d);
       var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));
       components.push(temp);
+      console.log("Generated component");
     });
-
-
-  });
-
-
 
   // Get frames rolling by connecting the controller
   controller.connect();
 });
+
 
 
 /*
