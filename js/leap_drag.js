@@ -39,7 +39,7 @@ $(document).on('ready', function () {
   $("#invisible").css("top", height_grid + 10 + "px");
   $("#invisible").css("left", width_grid + 10 + "px");
   $("#loop").css("top", height_grid + 10 + "px");
-  $("#loop").css("left", 2*width_grid + 10 + "px");
+  $("#loop").css("left", 2 * width_grid + 10 + "px");
 
 
   $('body div').each(function () {
@@ -273,9 +273,10 @@ function onScreenTap(gesture) {
 
 
   }
-
+  console.log(parseInt($('#test').top) + "  " + parseInt($("#invisible").top));
   if (parseInt($('#test').top) >= parseInt($("#invisible").top) - 5 && parseInt($('#test').top) <= parseInt($("#invisible").top) + 5 && parseInt($('#test').left) >= parseInt($("#invisible").left) - 5 && parseInt($('#test').left) <= $("#invisible").left + 5) {
     $("#answer").css("border-color", "green");
+
   }
 }
 
