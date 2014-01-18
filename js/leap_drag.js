@@ -37,7 +37,7 @@ $(document).on('ready', function () {
   $("#invisible").css("width", width_grid + "px");
   $("#invisible").css("height", height_grid + "px");
   $("#invisible").css("top", height_grid + 10 + "px");
-  $("#invisible").css("top", height_grid + 10 + "px");
+  $("#invisible").css("left", width_grid + 10 + "px");
   $("#loop").css("top", height_grid + 10 + "px");
   $("#loop").css("left", 2*width_grid + 10 + "px");
 
