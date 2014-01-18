@@ -1,10 +1,9 @@
 #test {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   background-color: red;
   border-radius: 4px;
-}
-#surface {
-  width: 100%;
-  height: 100%;
+  position:absolute;
+  top: 100px;
+  left: 100px;
 }
