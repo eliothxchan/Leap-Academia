@@ -60,7 +60,9 @@ $(document).on('ready', function () {
         onScreenTap(gesture);
         break;
 
-
+      case "circle":
+        onCircle(gesture);
+        break;
       }
 
     }
@@ -184,6 +186,32 @@ function leapToScene(leapPos) {
   return [x, -y];
 
 }
+
+function onCircle( gesture ){
+
+    var pos = leapToScene( gesture.center );
+    var radius = gesture.radius;
+
+    var clockwise = false;
+
+    if( gesture.normal[2]  <= 0 )
+      clockwise = true;
+
+    if (isHoldingObject != null && gesture.progress > 1 && gesture.progress < 4) {
+      if( clockwise ) {
+        console.log("Rotate clockwise.");
+        $('#'+isHoldingObject.id).css({transform: 'rotate(+90deg'});
+        $('#'+isHoldingObject.id).css({WebkitTransform: 'rotate(+90deg'});
+        $('#'+isHoldingObject.id).css({'-moz-transform': 'rotate(+90deg'});    
+      }
+      else {
+        console.log("Rotate counterclockwise.");
+        $('#'+isHoldingObject.id).css({transform: 'rotate(-90deg'});
+        $('#'+isHoldingObject.id).css({WebkitTransform: 'rotate(-90deg'});
+        $('#'+isHoldingObject.id).css({'-moz-transform': 'rotate(-90deg'}); 
+      }
+    }
+  }
 
 function onScreenTap(gesture) {
 
