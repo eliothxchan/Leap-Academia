@@ -212,6 +212,7 @@ function onScreenTap(gesture) {
     $('#pointer').css("left", pos[0] + isHoldingObject.width / 2);
 
     isHoldingObject = null;
+
     
   }
 }
