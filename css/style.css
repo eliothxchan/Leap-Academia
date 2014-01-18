@@ -1,6 +1,8 @@
 #test {
-  background-color: red;
+  background-image: url("../images/resistor.png");
   border-radius: 4px;
+  background-size: 200px 100px;
+  background-repeat: no-repeat;
   position: absolute;
   top: 100px;
   left: 100px;
@@ -14,7 +16,9 @@
   top: -10px;
 }
 #loop {
-  background-color: blue;
+  background-image: url("../images/vsource.png");
+  background-size: 200px 100px;
+  background-repeat: no-repeat;
   border-radius: 4px;
   position: absolute;
   top: 100px;
