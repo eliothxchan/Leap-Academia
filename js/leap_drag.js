@@ -273,8 +273,8 @@ function onScreenTap(gesture) {
 
 
   }
-  console.log(parseInt($('#test').top) + "  " + parseInt($("#invisible").top));
-  if (parseInt($('#test').top) >= parseInt($("#invisible").top) - 5 && parseInt($('#test').top) <= parseInt($("#invisible").top) + 5 && parseInt($('#test').left) >= parseInt($("#invisible").left) - 5 && parseInt($('#test').left) <= $("#invisible").left + 5) {
+  console.log(parseInt($('#test').css("top")) + "  " + parseInt($("#invisible").css("top")));
+  if (parseInt($('#test').css("top")) >= parseInt($("#invisible").css("top")) - 5 && parseInt($('#test').css("top")) <= parseInt($("#invisible").css("top")) + 5 && parseInt($('#test').css("left")) >= parseInt($("#invisible").css("left")) - 5 && parseInt($('#test').css("left")) <= $("#invisible").css("left") + 5) {
     $("#answer").css("border-color", "green");
 
   }
