@@ -26,6 +26,8 @@ $(document).ready(function(){
   
   $('#ohmsAnswer').css('top', 3*height_grid + 10 + "px");
   $('#ohmsAnswer').css('left', width_grid + 10 + "px");
+  $('#ohms').css('top', height_grid + 10 + "px");
+  $('#ohms').css('left', 10 + "px");
   
   $('#description3').css('top', 3*height_grid + 10 + "px");
   $('#description3').css('left', 2*width_grid + 10 + "px");
