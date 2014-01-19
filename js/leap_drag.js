@@ -252,7 +252,7 @@ function onScreenTap(gesture) {
 
       var element = components[i];
 
-      if (isInComponent(pos[1], pos[0], element) {
+      if (isInComponent(pos[1], pos[0], element)) {
 
           isHoldingObject = new component(element.top, element.left, element.width, element.height, element.id);
 
