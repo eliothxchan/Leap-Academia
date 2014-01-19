@@ -287,6 +287,7 @@ function onScreenTap(gesture) {
   console.log(parseInt($('#test').css("top")) + "  " + parseInt($("#invisible").css("top")));
   if (parseInt($('#test').css("top")) >= parseInt($("#invisible").css("top")) - 5 && parseInt($('#test').css("top")) <= parseInt($("#invisible").css("top")) + 5 && parseInt($('#test').css("left")) >= parseInt($("#invisible").css("left")) - 5 && parseInt($('#test').css("left")) <= parseInt($("#invisible").css("left")) + 5) {
     $("#answer").css("border-color", "green");
+    $("#answer").html("That's correct! A 10 Ohm resistor will create a current of 1 Ampere through the circuit.");
     console.log("REACHED");
   }
 }

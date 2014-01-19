@@ -50,6 +50,7 @@
   left: 600px;
 }
 #answer {
+  text-align: center;
   border: 2px solid red;
   width: 277px;
   height: 137px;
