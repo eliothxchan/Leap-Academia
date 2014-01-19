@@ -1,5 +1,6 @@
 function recordVoice() {
   var recognizing = false;
+  var global_final;
 
   if (!('webkitSpeechRecognition' in window)) {
     console.log("Not there");
@@ -15,7 +16,7 @@ function recordVoice() {
     recognition.onstart = function () {
 
     };
-    recognition.onresult = function (event) {
+    
       recognition.onresult = function (event) {
         var interim_transcript = '';
         var final_transcript = '';
@@ -28,20 +29,26 @@ function recordVoice() {
         }
         var temp = [final_transcript, interim_transcript];
         console.log(temp);
-        return temp;
+        global_final = final_transcript;
+        recognition.stop();
       };
-    }
 
     recognition.onerror = function (event) {
       console.log(event);
     };
-    recognition.onend = function () {};
+    recognition.onend = function () {
+      console.log("Voice recognition end.");
+    };
 
     function startButton(event) {
       final_transcript = '';
 
     }
 
+
+
+
   };
 
+  return global_final;
 }
