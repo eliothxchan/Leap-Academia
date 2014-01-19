@@ -1,3 +1,8 @@
+body {
+  background-color: #fff;
+  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+}
 #test {
   border: 2px solid red;
   background-image: url("../images/resistor.png");
@@ -57,19 +62,19 @@
   position: absolute;
   right: 0px;
 }
-#line1{
+#line1 {
   width: 200px;
   position: absolute;
   border: 1px solid black;
 }
-
 #line2 {
   height: 100px;
   position: absolute;
   border: 1px solid black;
 }
-
-#line3{
+#line3 {
   position: absolute;
   border: 1px solid black;
 }
+#line4 {}
+#line5 {}
