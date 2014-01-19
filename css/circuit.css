@@ -31,7 +31,7 @@
   position: absolute;
 }
 
-#voltageAnswer, #currentAnswer, #resistanceAnswer {
+.answer {
   background-color: grey;
 }
 #next {
