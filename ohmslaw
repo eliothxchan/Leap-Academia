@@ -1,0 +1,23 @@
+<html>
+
+<head>
+  <title>Circuit - 1</title>
+  <link href="css/bootsrap/bootstrap.css" rel="stylesheet" />
+  <link href="css/common.css" rel="stylesheet" />
+  <link href="css/circuit.css" rel="stylesheet" />
+  
+  <script src="js/jquery.js"></script>
+  <script src="js/leap.js"></script>
+  <script src="js/leap_drag.js"></script>
+  <script src="js/snaptogrid.js"></script>
+  <script src="js/circuitsIntro.js"></script>
+</head>
+
+<body>
+  <div id = "header">
+    <h1 class="main">LEAP ACADEMIA</h1>
+  </div>
+  
+  <div class="wrap">
+    <h2><p class ="subheader">Introduction to circuits parts</p></h2>
+  </div>
