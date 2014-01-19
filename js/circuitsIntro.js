@@ -19,7 +19,10 @@ $(document).ready(function(){
   
   $('#voltage').css("top", height_grid + 10 + "px ");
   $('#resistance').css("top", 2*height_grid + 10 + "px ");
-  $('#current').css("top", 3*height_grid + 10 + "px ");
+  $('#current').css("top", 3*height_grid + 10 + "px "); 
+  $('#voltage').css("left",  10 + "px ");
+  $('#resistance').css("left", 10 + "px ");
+  $('#current').css("left",  10 + "px ");
   
   $('#description, #description2').css("top", height_grid + 10 + "px ");
   $('#description, #description2').css("left", 8*height_grid + 10 + "px ");
