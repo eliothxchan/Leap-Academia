@@ -334,49 +334,46 @@ if (!('webkitSpeechRecognition' in window)) {
       }
     }
     global_final = final_transcript;
-    //var temp = [final_transcript, interim_transcript];
-    console.log(global_final);
-    //global_final = final_transcript;
-    console.log(global_final)
-    var str = parseInt(global_final);
-    //console.log(str.type());
-    if (!isNaN(str) && str != null) {
-
-      var name = "items" + components.length;
-      var $d = $("<div class='component'></div>").attr('id', name);
-      $d.css("position", "absolute");
-      $d.css("top", "0px");
-      $d.css("left", "0px");
-      $d.css("height", height_grid + "px");
-      $d.css("width", width_grid + "px");
-      $d.css("background-image", "url(\"../images/resistor.png\")");
-      $d.css("background-size", "200px 100px");
-      $d.css("background-repeat", "no-repeat");
-
-      $d.html(str + " Ohms");
-      $('body').append($d);
-
-      var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));
-      components.push(temp);
-      console.log("Generated component");
-    }
-    recognition.stop();
-  };
-
-  recognition.onerror = function (event) {
-    console.log(event);
-  };
-  recognition.onend = function () {
-    console.log("Voice recognition end.");
-  };
-
-  function startButton(event) {
-    recognition.start();
-    final_transcript = '';
-
+    createNewItem();
+    components.push(temp);
+    console.log("Generated component");
   }
-
-
-
-
+  recognition.stop();
 };
+
+recognition.onerror = function (event) {
+  console.log(event);
+};
+recognition.onend = function () {
+  console.log("Voice recognition end.");
+};
+
+function startButton(event) {
+  recognition.start();
+  final_transcript = '';
+
+}
+
+function createNewItem() {
+  var str = parseInt(global_final);
+  if (!isNaN(str) && str != null) {
+
+    var name = "items" + components.length;
+    var $d = $("<div class='component'></div>").attr('id', name);
+    $d.css("position", "absolute");
+    $d.css("top", "0px");
+    $d.css("left", "0px");
+    $d.css("height", height_grid + "px");
+    $d.css("width", width_grid + "px");
+    $d.css("background-image", "url(\"../LeapMotion/images/resistor.png\")");
+    $d.css("background-size", "200px 100px");
+    $d.css("background-repeat", "no-repeat");
+    $d.css("border", "2px solid black");
+    $d.css("background-position", "center");
+
+    $d.html(str + " Ohms");
+    $('body').append($d);
+
+    var temp = new component(parseInt($("#" + name).css("top")), parseInt($("#" + name).css("left")), $("#" + name).width(), $("#" + name).height(), $("#" + name).attr('id'));
+  }
+}
