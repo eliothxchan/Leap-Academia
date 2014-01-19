@@ -16,6 +16,7 @@ function Block(element, type) {
         //Place element in the DOM
         document.body.appendChild(this);
     };
+    this.HTML.create();
     return this.HTML;
     //insert gesture event for mpickup
 }
@@ -23,12 +24,12 @@ function Block(element, type) {
 function move(element) {
     //Make position absolute
     $(element).addClass("moveable");
-    
+
     //Update position to mouse position
     $("body").mousemove(function (event) {
         var beingHeld = element;
         console.log(beingHeld.id);
-        
+
         var x = event.clientX;
         var y = event.clientY;
         //Set Y coord
@@ -39,12 +40,16 @@ function move(element) {
         $(".js_block").click(function () {
             nest(this, beingHeld);
             beingHeld = "";
-//            $(element).removeClass("moveable");
+            x = Number(x);
+            y = Number(y);
+            //            $(element).removeClass("moveable");
 
         });
         $("body").click(function () {
-            $("body").unbind();
             beingHeld = "";
+            x = Number(x);
+            y = Number(y);
+            $('body').unbind();
         });
     });
 }
@@ -57,30 +62,38 @@ function outputName(type) {
         return "If";
     case "else":
         return "Else";
+    case "whileLoop":
+        return "While Loop";
+    case "function":
+        return "Function";
     }
 }
 
 function link(ele1, ele2) {
-    var pos1 = [ele1.style.left, ele1.style.top];
-    var pos2 = [ele2.style.left, ele2.style.top];
+    var xy1 = [Number(ele1.style.top.slice(0, -2)),
+               Number(ele1.style.left.slice(0, -2))];
+    var xy2 = [Number(ele2.style.top.slice(0, -2)),
+               Number(ele2.style.left.slice(0, -2))];
+    console.log(xy1, xy2);
     var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
     document.body.appendChild(canvas);
-    if (canvas.getContext) {
-        var line = canvas.getContext("2d");
-        line.moveTo(pos1[0], pos1[1]);
-        line.lineTo(pos2[0], pos2[1]);
-    }
+
+    context.beginPath();
+    context.moveTo(xy1[0], xy1[1]);
+    context.lineTo(xy2[0], xy2[1]);
+    context.stroke();
 }
 
 
 function nest(parent, child) {
-//  Check that we're not appending an element to itself
+    //  Check that we're not appending an element to itself
     if (parent === child || parent.nestedTo === child) {
         return;
     }
-    
+
     $(parent).append(child);
-    $(parent).removeClass("moveable");
+    //$(parent).removeClass("moveable");
     $(child).nested = true;
     $(child).nestedTo = parent;
     $(child).removeClass("moveable");

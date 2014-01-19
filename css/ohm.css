@@ -11,6 +11,7 @@
   background-position: center;
   background-size: 200px 100px;
   background-repeat: no-repeat;
+  z-index:1000;
 }
 #ohmsAnswer {
   background-color: grey;
