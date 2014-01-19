@@ -90,3 +90,12 @@ body {
   position: absolute;
   border: 1px solid black;
 }
+#generateComponent {
+  border-radius: 5px;
+  font-size: large;
+  position: absolute;
+  top: 450px;
+  left: 600px;
+  background-color: green;
+  color: white;
+}
