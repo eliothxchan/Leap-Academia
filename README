@@ -1,1 +1,9 @@
-Repo for MHacks 3. Audun, Akshay and Eliot.
+Authored by Audun Bjornerud Mo, Akshay Budhkar, and Eliot Chan for MHacks III.
+
+Leap Academia is the beginnings of the realization of a new means of education. We, as a team, believe in the effectiveness of tactile and interactive education for the young minds of the next generation, and as such, have decided to use the Leap Motion to achieve our goals of fun, affordable, and engaging learning.
+
+The Leap Motion is an affordable substitute for a variety of real-life materials, allowing for pseduo-interaction with a plethora of actual components that may be unfeasible or unrealistic to acquire. One such example would be circuitry - it may be impractical to purchase a Wave Generator for a 10-year old child. However, with the correct software and the Leap Motion, we can simulate the interaction with a breadboard in true-to-life-manner.
+
+Another example, less directly intuitive example, would be web development. Being able to physically manipulate paragraphs and elements grants another level of control over the structure of code previously impossible. The physical movement of elements can also be used as an educational tool - shifting of variables in and out of methods allows those new to programming to understand the ramifications of changing scope of variables.
+
+We are Leap Academia. We hope to inspire, to teach, and engage.
