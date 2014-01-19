@@ -32,14 +32,14 @@ function move(element) {
         var x = event.clientX;
         var y = event.clientY;
         //Set Y coord
-        $(beingHeld).css("top", y);
+        $(element).css("top", y);
         //Set X coord
-        $(beingHeld).css("left", x);
+        $(element).css("left", x);
 
         $(".js_block").click(function () {
             nest(this, beingHeld);
             beingHeld = "";
-            $(beingHeld).removeClass("moveable");
+//            $(element).removeClass("moveable");
 
         });
         $("body").click(function () {
@@ -57,6 +57,18 @@ function outputName(type) {
         return "If";
     case "else":
         return "Else";
+    }
+}
+
+function link(ele1, ele2) {
+    var pos1 = [ele1.style.left, ele1.style.top];
+    var pos2 = [ele2.style.left, ele2.style.top];
+    var canvas = document.createElement('canvas');
+    document.body.appendChild(canvas);
+    if (canvas.getContext) {
+        var line = canvas.getContext("2d");
+        line.moveTo(pos1[0], pos1[1]);
+        line.lineTo(pos2[0], pos2[1]);
     }
 }
 
