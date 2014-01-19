@@ -4,24 +4,36 @@
 
   <script src="js/jquery.js"></script>
   <script src="leap.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/jQueryRotate.js"></script>
+  <script src="js/snaptogrid.js"></script>
   <script src="js/leap_drag.js"></script>
   <link type="text/css" href="css/style.css" rel="stylesheet" />
+  <link type="text/css" href="css/joint.css" rel="stylesheet" />
 </head>
 
 <body>
-  <div id="test">
-    <p>This is a test</p>
+  <div id="test" class="component">
   </div>
   
-    <div id="loop">
-    <p>This is a loop</p>
+    <div id="loop" class="component">
+      <center>10 V</center>
   </div>
   
-    <div id="circuit">
-    <p>This is a circuit</p>
-  </div>
-  
+  <div id = "invisible"></div>
   <div id = "pointer"></div>
+  <div id = "direction"></div>
+  <button id = "generateComponent">Generate Resistance</button>
+
+  <div id = "answer">
+    <p>Pick a resistor value that will give us a 1 Ampere current flowing through the circuit. Keep in mind Ohm's Law: V = IR. Drag the resistor into the grey box.</p> 
+  </div>
+
+  <div id = "line1"></div>
+  <div id = "line2"></div>
+  <div id = "line3"></div>
+  <div id = "line4"></div>
+  <div id = "line5"></div>
 </body>
 
 </html>

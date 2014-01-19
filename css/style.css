@@ -1,13 +1,35 @@
+body {
+  background-color: #fff;
+  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+}
 #test {
-  width: 200px;
-  height: 200px;
-  background-color: red;
+  border: 2px solid red;
+  background-image: url("../images/resistor.png");
   border-radius: 4px;
+  background-size: 200px 100px;
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
-  top: 100px;
-  left: 100px;
+  top: 500px;
+  left: 1000px;
+  z-index: 1000;
+}
+#invisible {
+  border-radius: 4px;
+  background-color: grey;
+  position: absolute;
 }
 #pointer {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  opacity: 0;
+  position: absolute;
+  left: 0px;
+  top: -10px;
+}
+#direction {
   width: 10px;
   height: 10px;
   background-color: black;
@@ -16,20 +38,55 @@
   top: -10px;
 }
 #loop {
-  width: 200px;
-  height: 200px;
-  background-color: blue;
+  border: 2px solid green;
+  background-image: url("../images/vsource.png");
+  background-position: center;
+  background-size: 200px 100px;
+  background-repeat: no-repeat;
   border-radius: 4px;
   position: absolute;
-  top: 100px;
-  left: 350px;
 }
 #circuit {
-  width: 200px;
-  height: 200px;
+  border: 2px solid black;
   background-color: green;
   border-radius: 4px;
   position: absolute;
   top: 100px;
   left: 600px;
+}
+#answer {
+  text-align: center;
+  border: 2px solid red;
+  width: 277px;
+  height: 137px;
+  position: absolute;
+  right: 0px;
+}
+#line1 {
+  width: 200px;
+  position: absolute;
+  border: 1px solid black;
+}
+#line2 {
+  height: 100px;
+  position: absolute;
+  border: 1px solid black;
+}
+#line3 {
+  position: absolute;
+  border: 1px solid black;
+}
+#line4 {
+  width: 200px;
+  position: absolute;
+  border: 1px solid black;
+}
+#line5 {
+  height: 100px;
+  position: absolute;
+  border: 1px solid black;
+}
+#line6 {
+  position: absolute;
+  border: 1px solid black;
 }
