@@ -40,6 +40,17 @@ $(document).on('ready', function () {
   $("#invisible").css("left", width_grid + 10 + "px");
   $("#loop").css("top", height_grid + 10 + "px");
   $("#loop").css("left", 2 * width_grid + 10 + "px");
+  
+  $("#line1").css("left", 3 * width_grid + 10 + "px");
+  $("#line1").css("top", 1.5*height_grid + 10 + "px");
+  
+  $("#line2").css("top", 1.5*height_grid + 10 + "px");
+  $("#line2").css("left", 3 * width_grid + 210 + "px");
+  
+  
+  $("#line3").css("width", 2 * width_grid + 10 + "px");
+  $("#line3").css("top", 1.5*height_grid + 110 + "px");
+  $("#line3").css("left",3 * width_grid + 210 + "px");
 
 
   $('body div').each(function () {

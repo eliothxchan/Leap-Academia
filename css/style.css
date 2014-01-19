@@ -40,7 +40,6 @@
   background-repeat: no-repeat;
   border-radius: 4px;
   position: absolute;
-
 }
 #circuit {
   border: 2px solid black;
@@ -56,4 +55,20 @@
   height: 137px;
   position: absolute;
   right: 0px;
+}
+#line1{
+  width: 200px;
+  position: absolute;
+  border: 1px solid black;
+}
+
+#line2 {
+  height: 100px;
+  position: absolute;
+  border: 1px solid black;
+}
+
+#line3{
+  position: absolute;
+  border: 1px solid black;
 }
