@@ -48,9 +48,15 @@ $(document).on('ready', function () {
   $("#line2").css("left", 3 * width_grid + 210 + "px");
   
   
-  $("#line3").css("width", 2 * width_grid + 10 + "px");
+  $("#line3").css("width", 3.5 * width_grid - 8 + "px");
   $("#line3").css("top", 1.5*height_grid + 110 + "px");
-  $("#line3").css("left",3 * width_grid + 210 + "px");
+  $("#line3").css("left",height_grid/2 + 15 + "px");
+  
+  $("#line4").css("left", 3 * width_grid + 10 - 200 - 2*width_grid + "px");
+  $("#line4").css("top", 1.5*height_grid + 10 + "px");  
+  
+  $("#line5").css("top", 1.5*height_grid + 10 + "px");
+  $("#line5").css("left", height_grid/2 + 15 + "px");
 
 
   $('body div').each(function () {

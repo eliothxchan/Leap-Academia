@@ -76,5 +76,17 @@ body {
   position: absolute;
   border: 1px solid black;
 }
-#line4 {}
-#line5 {}
+#line4 {
+  width: 200px;
+  position: absolute;
+  border: 1px solid black;
+}
+#line5 {
+  height: 100px;
+  position: absolute;
+  border: 1px solid black;
+}
+#line6 {
+  position: absolute;
+  border: 1px solid black;
+}
