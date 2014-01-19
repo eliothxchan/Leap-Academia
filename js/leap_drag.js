@@ -89,9 +89,11 @@ $(document).on('ready', function () {
         onScreenTap(gesture);
         break;
 
-        // case "circle":
-        //   onCircle(gesture);
-        //   break;
+    case "circle":
+      if(gesture.state == "stop"){
+          onCircle(gesture);
+      }
+      break;
       }
 
     }
@@ -218,37 +220,40 @@ function leapToScene(leapPos) {
 
 }
 
-// function onCircle( gesture ){
+ function onCircle(gesture) {
 
-//     var pos = leapToScene( gesture.center );
-//     var radius = gesture.radius;
+     var pos = leapToScene(gesture.center);
+     var radius = gesture.radius;
+     isHoldingObject.orientation = 0;
 
-//     var clockwise = false;
+     var clockwise = false;
 
-//     if( gesture.normal[2]  <= 0 )
-//       clockwise = true;
+     if (gesture.normal[2] <= 0)
+         clockwise = true;
 
-//     if (isHoldingObject != null && gesture.progress > 1 && gesture.progress < 4) {
-//       if( clockwise ) {
-//         console.log("Rotate clockwise by "+(isHoldingObject.orientation+90));
-//         $('#'+isHoldingObject.id).rotate({angle:(isHoldingObject.orientation+90)});
-//         if (isHoldingObject.orientation+90 >= 360) 
-//           isHoldingObject.orientation = 0;
-//         else
-//           isHoldingObject.orientation += 90;   
+     if (isHoldingObject != null && gesture.progress > 1 && gesture.progress < 4) {
+         if (clockwise) {
+             console.log("Rotate clockwise by " + (isHoldingObject.orientation + 90));
+             $('#' + isHoldingObject.id).rotate({
+                 angle: (isHoldingObject.orientation + 90)
+             });
+             if (isHoldingObject.orientation + 90 >= 360)
+                 isHoldingObject.orientation = 0;
+             else
+                 isHoldingObject.orientation += 90;
 
-//       }
-//       else {
-//         console.log("Rotate counterclockwise by "+(isHoldingObject.orientation+90));
-//         $('#'+isHoldingObject.id).rotate({angle:(isHoldingObject.orientation+90)});
-//         if (isHoldingObject.orientation-90 <= -360){
-//           isHoldingObject.orientation = 0;
-//         }
-//         else
-//             isHoldingObject.orientation -= 90;
-//       }
-//     }
-//   }
+         } else {
+             console.log("Rotate counterclockwise by " + (Number(isHoldingObject.orientation) + 90));
+             $('#' + isHoldingObject.id).rotate({
+                 angle: (isHoldingObject.orientation + 90)
+             });
+             if (isHoldingObject.orientation - 90 <= -360) {
+                 isHoldingObject.orientation = 0;
+             } else
+                 isHoldingObject.orientation -= 90;
+         }
+     }
+   }
 
 function onScreenTap(gesture) {
 
