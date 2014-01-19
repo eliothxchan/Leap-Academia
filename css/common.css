@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Nova Slim';
+  src: url('fonts/NovaSlim.ttf');
+  font-weight: lighter;
+  font-style: normal;
+}
+.header {
+  text-align: center;
+  width: 100;
+}
+.main {
+  font-family: 'Nova Slim';
+  color: #5daa00;
+  position: absolute;
+  left: 400px;
+  font-size: 5em;
+  background: url(../images/leap.png) no-repeat bottom;
+  background-size: 500px 200px;
+  height: 233px;
+}
+.wrap {
+  position: absolute;
+  top: 200;
+  width: 100%;
+  text-align: center;
+}
+.subheader {
+  position: relative;
+}
