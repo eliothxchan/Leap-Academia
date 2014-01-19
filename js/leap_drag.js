@@ -156,6 +156,8 @@ $(document).on('ready', function () {
     $d.css("height", height_grid + "px");
     $d.css("width", width_grid + "px");
     $d.css("background-image", "url(\"../images/resistor.png\")");
+    $d.css("background-size", "200px 100px");
+    $d.css("background-repeat", "no-repeat");
     var str = parseInt(recordVoice());
     $d.html(str+" Ohms");
     $('body').append($d);
