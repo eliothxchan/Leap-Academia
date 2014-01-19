@@ -54,6 +54,22 @@ function isInComponent(cursor_top, cursor_left, component_var) {
   }
 }
 
+//checks whether the two components occupy the same space
+function occupySameSpace(id_1, id_2) {
+
+  top_1 = parseInt($('#'+id_1).css("top"));
+  top_2 = parseInt($('#'+id_2).css("top"));
+  left_1 = parseInt($('#'+id_1).css("left"));
+  left_2 = parseInt($('#'+id_2).css("left"));
+
+  if (top_1 >= top_2 - 5 && top_1 <= top2 + 5 && left_1 >= left_2 - 5 && left_1 <= left_2 + 5) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 //begin document
 $(document).on('ready', function () {
 
