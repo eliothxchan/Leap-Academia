@@ -5,7 +5,6 @@
   background-repeat: no-repeat;
   border-radius: 4px;
   position: absolute;
-  z-index: 1000;
 }
 #voltage {
   background-image: url("../images/vsource.png");
